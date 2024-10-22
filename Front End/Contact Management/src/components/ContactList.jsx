@@ -17,14 +17,7 @@ const ContactList = () => {
 
   const getAllContacts = async () => {
     const response = await axios.get(
-      "http://localhost:8000/api/v1/contacts/get-all-contacts",
-      {
-        params: {
-          searchText: searchText,
-          page: 0,
-          size: 10,
-        },
-      }
+      "http://localhost:8000/api/v1/contacts/get-all-contacts"
     );
 
     setContacts(response.data.data.dataList);
@@ -40,7 +33,6 @@ const ContactList = () => {
       <br />
       <div className="container">
         <h1 className="text-center" style={myStyle}>
-          {" "}
           Contact List
         </h1>
         <br />
@@ -65,15 +57,6 @@ const ContactList = () => {
                 <td>{contact.address}</td>
                 <td>{contact.email}</td>
                 <td>{contact.contactNumber}</td>
-
-                <td className="mx-2">
-                  <Link
-                    className="btn btn-info"
-                    to={`/contactProfile/${contact.id}`}
-                  >
-                    View
-                  </Link>
-                </td>
 
                 <td className="mx-2">
                   <button
